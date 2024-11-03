@@ -1,0 +1,95 @@
+<p>home works!</p>
+<div class="container">
+    <div class="weather-card">
+        <div class="input-group">
+            <input type="text" class="font-control search-input" placeholder="Enter location"/>
+            <button class="btn btn-primary search-btn">Search</button>
+        </div>
+        <div class="weather-info">
+           <img src="" alt="weather-image"> 
+            <div class="temperature">Temperature</div>
+            <div class="description">Description</div>
+        </div>
+        <div class="additional-info">
+        <div class="info-item">
+            <span>Feels like:</span>
+            <span></span>
+        </div>
+        <div class="additional-info">
+            <div class="info-item">
+                <span>Pressure:</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="additional-info">
+            <div class="info-item">
+                <span>Humidity:</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="additional-info">
+            <div class="info-item">
+                <span>City:</span>
+                <span></span>
+            </div>
+        </div>
+        <div class="additional-info">
+            <div class="info-item">
+                <span>Information:</span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<h3>Le città selezionate sono:</h3>
+<ol>
+    <li *ngFor="let item of city">
+        {{item}}
+    </li>
+</ol>
+<hr />
+
+<table>
+    <thead>
+        <tr>
+            <th>città </th>
+            <th>temperatura </th>
+            <th>vento </th>
+            <th>città </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let det of carath">
+            <td>{{ det.temperature }}</td>
+            <td>{{ det.vento }} </td>
+            <td>{{ det.humidity }} </td>
+            <td>{{ det.condition }} </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col">
+        <h3>Inserimento preferiti</h3>
+        <div class="form-group">
+            <label for="input-preferiti"></label>
+            <input type="text" [(ngModel)]="preferiti" class="form-control" id="preferiti" placeholder="preferiti">
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col">
+        <ul>
+            <li><strong>Preferiti:</strong>
+                {{preferiti}}
+            </li>
+        </ul>
+    </div>
+</div>

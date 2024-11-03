@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## GENERATE component - ng generate component GRAFICO (.*[ts,css,html,]) add import to index.html
+## ROUTE ARRAY OBJECT JS (approutes.ts); 
+## GENERATE CLASS/CITY - ng generate class models/City (.ts spec.ts) city.ts classe riferimento 
+## GENERATE SERVICE - ng generate service services/meteo (.ts)
+## GENERATE COMPONENT - ng generate component components/inserimento (.*[ts,css,html,]) add
