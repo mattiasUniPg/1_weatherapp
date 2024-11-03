@@ -18,7 +18,7 @@ export class MeteoService {
       //${URL}${cityName}${City.API_KEY}
       
       return this.httpClientService.get('')
-    } https://www.youtube.com/watch?v=rbkWAgc_x2U&t=37s */
+    }  */
 
     let losCity = localStorage.getItem("elenco_citta");
     if (!losCity)
@@ -38,7 +38,22 @@ export class MeteoService {
     return losCity ? JSON.parse(losCity) : [];
   
   }
+  
+  Delete(varCity: string | undefined): boolean
+  {
+    let losCity = localStorage.getItem("elenco_citta");
+    if(losCity) {
+    this.city = JSON.parse(losCity);
 
+    for(let [id, item] of this.city.entries()){
+  if(item.city == varCity)
+    this.city.splice(id, 1)
+  localStorage.setItem("elenco_citta", JSON.stringify(this.city));
+  return true;
+      }
+    }
+    return false;
+  }
 
 
 }

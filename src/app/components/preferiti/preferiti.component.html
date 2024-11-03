@@ -1,0 +1,26 @@
+<p>preferiti works!</p>
+<table class="table table-striped">
+    <thead>
+<tr>
+    <th>Citta</th>
+    <th>Info:</th>
+    <th>Temperatura</th>
+    <th>condizioni</th>
+    <th>umidity</th>
+    <th>Vento</th>
+</tr>
+ </thead>
+ <tbody>
+<tr *ngFor="let item of preferiti"> 
+    <td>{{item.city}}</td>
+    <td>{{item.information}}</td>
+    <td>{{item.temperature}}</td>
+    <td>{{item.conditions}}</td>
+    <td>{{item.umidity}}</td>
+    <td>{{item.wind}}</td>
+    <td>
+        <button type="button" class="btn btn-outline-danger" (click)="elimina()">X</button>
+    </td>
+</tr>
+ </tbody>
+</table>

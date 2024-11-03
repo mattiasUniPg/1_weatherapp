@@ -1,8 +1,11 @@
 export const models = {
-  API_KEY: 'd3c83df3c7987b318ceb87d68d953401',
+  API_KEY: '',
 };
   
 export class City {
+  getAll(): City[] {
+    throw new Error('Method not implemented.');
+  }
   Insert(sCity: City) {
     throw new Error('Method not implemented.');
   }
