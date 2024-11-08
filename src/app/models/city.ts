@@ -3,6 +3,7 @@ export const models = {
 };
   
 export class City {
+  [x: string]: any;
   getAll(): City[] {
     throw new Error('Method not implemented.');
   }

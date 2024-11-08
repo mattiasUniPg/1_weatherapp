@@ -32,3 +32,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## GENERATE SERVICE - ng generate service services/meteo (.ts)
 ## GENERATE COMPONENT - ng generate component components/inserimento (.*[ts,css,html,]) add#
 ## GENERATE COMPONENT -ng generate component components/preferiti (.*[ts,css,html,]) add#
+## INSTALL npm install chart.js
+ https://www.youtube.com/watch?v=yc-HnoMsgdI
+ https://www.chartjs.org/docs/latest/charts/line.html
+## API DEFINED
+https://api.openweathermap.org/data/2.5/weather?q=London&appid={API key}
+## METRICHE
+https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid={API key}
+# UNI
+https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+# COMPLESSE
+https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid={API key}
+## COMPLETE
+https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}

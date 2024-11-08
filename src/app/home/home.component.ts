@@ -16,4 +16,6 @@ export class HomeComponent {
   { temperature:"18 C°", vento: "30 km/h",humidity: "40%",condition: "cloudy" }
   ]
   preferiti: any 
+
+  
 }
