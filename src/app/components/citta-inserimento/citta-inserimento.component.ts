@@ -26,7 +26,7 @@ export class CittaInserimentoComponent {
 
 
 
-  
+  /*
   salva() : void {
     let sCity = new City(this.cit, this.info, this.temp, this.cond, this.umid, this.win);
     if(this.service.Insert(sCity))
@@ -40,4 +40,5 @@ export class CittaInserimentoComponent {
 
 
   }
+    */
 }

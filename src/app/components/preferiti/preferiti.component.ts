@@ -22,6 +22,7 @@ export class PreferitiComponent {
     this.preferiti = this.service.getAll();
   }
   
+  /*
   elimina(varCity: string): void 
   {
     
@@ -41,5 +42,6 @@ export class PreferitiComponent {
   ordinaCitta() {
     
   }
+  */
 
 }

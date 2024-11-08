@@ -2,25 +2,29 @@ import { Injectable } from '@angular/core';
 import { City } from '../models/city';
 import { HttpClient } from '@angular/common/http';
 import { response } from 'express';
+import { models } from '../models/city';
+import { fetchWeatherApi } from 'openmeteo';
 
-
+const url = "https://api.open-meteo.com/v1/forecast";
 // const HTTP1 = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m'
 // 'https://api.openweathermap.org/data/2.5/weather?q=London&appid={API key}';
+const URL = 'https://api.openweathermap.org/data/2.5/weather?q';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeteoService {
-
+  
   city: City[] = new Array();
 
   constructor(private readonly httpClientService: HttpClient) {
 
-    /* fetchData(cityName: string){
+     fetchData(cityName: string){
        //${URL}${cityName}${City.API_KEY}
-       
-       return this.httpClientService.get('')
-     }  */
+       models.API_KEY
+       return this.httpClientService.get('{URL}${cityName}${models.API_KEY}}')
+     }  
 
     let losCity = localStorage.getItem("elenco_citta");
     if (!losCity)
@@ -29,15 +33,13 @@ export class MeteoService {
       this.city = JSON.parse(losCity);
   }
 
-
-
   renderWeather(weather: any) {
     console.log(weather);
     var queryContainer = document.querySelector("#weather-results");
     //create tag for city and information
     var city = document.createElement("h3");
     city.textContent = weather.name;
-    queryContainer.append(city);
+    //queryContainer.append(city);
 
     //details weather city
     var details = document.createElement("p");
@@ -51,11 +53,9 @@ export class MeteoService {
     if (weatherDetails && weatherDetails.description) {
       var description = document.createElement("p");
       description.textContent = weatherDetails.description;
-      queryContainer.append(description);
+     // queryContainer.append(description);
     }
   }
-
-
 
   //fetch data weather for city
   fetchWeather(query: any) {
@@ -71,23 +71,19 @@ export class MeteoService {
   //GRAFICO
   
   getChartInfo(){
-return this.http.get('https://API,APIKEY,q='+ query +'time=24h');
-
-
+return "OK";
+//this.http.get('https://API,APIKEY,q='+ query +'time=24h');
 
   }
-
 
   Insert(objCity: City): boolean {
     this.city.push(objCity);
     localStorage.setItem("elenco_citta", JSON.stringify(this.city));
     return true;       //SEMPRE VERO; sostituire API
-
   }
   getAll(): City {
     let losCity = localStorage.getItem("elenco_citta");
     return losCity ? JSON.parse(losCity) : [];
-
   }
 
   Delete(varCity: string | undefined): boolean {
@@ -105,6 +101,4 @@ return this.http.get('https://API,APIKEY,q='+ query +'time=24h');
     return false;
   }
 
-
 }
-

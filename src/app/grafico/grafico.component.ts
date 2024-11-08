@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js/auto';
 import { MeteoService } from '../services/meteo.service';
+import { fetchWeatherApi } from 'openmeteo';
 Chart.register(...registerables);
 
 @Component({
@@ -22,6 +23,7 @@ export class GraficoComponent {
   timedata: any[] = [];
   colordata: any[] = [];
 
+  /*
   ngOnInit(): void {
 
     this.service.getChartInfo().subscribe(result => {
@@ -38,7 +40,7 @@ export class GraficoComponent {
           this.colordata.push(this.chartdata[i]
                 .day24H);
         }
-this.RenderChart(this.labeldata,this.timedata,this.colordata);
+//this.RenderChart(this.labeldata,this.timedata,this.colordata);
 // this.RenderChart(this.labeldata,this.timedata,this.colordata,"pie","piechart");
       }
 
@@ -47,9 +49,9 @@ this.RenderChart(this.labeldata,this.timedata,this.colordata);
 
     this.RenderChart();
 
-  }
+  } */
 
-  RenderChart( //labeldata:any,timedata:any,colordata:any,type:any,id:any)
+  RenderChart( //labeldata:any,timedata:any,colordata:any,type:any,id:any
   ): undefined {
 
     /*

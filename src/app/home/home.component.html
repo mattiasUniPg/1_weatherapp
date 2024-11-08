@@ -53,6 +53,23 @@
 </ol>
 <hr />
 
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="Caricamento meteo..">
+    <div class="card-body">
+      <h5 class="card-title">{{data.city}}{{data.temperature+'C°'}}</h5>
+      <p class="card-text"> {{data.information+' '}} {{data.conditions+' '}} {{data.humidity+'%   '}} {{data.wind+' km/h'}} </p>
+      <a href="/preferiti" class="btn btn-primary">con icona possibile+ Preferiti</a>
+    </div>
+  </div>
+
+<!--
+  MODELS:
+  information: string | undefined;
+  temperature: number | undefined;
+  city: string | undefined;
+    conditions: string | undefined;
+    umidity: number | undefined;
+    wind: number | undefined; -->
 <table>
     <thead>
         <tr>

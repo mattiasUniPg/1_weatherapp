@@ -45,3 +45,4 @@ https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid={API key}
 ## COMPLETE
 https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
+## NPM EXTENSION OPENMETEP : ' npm install openmeteo '
