@@ -30,13 +30,41 @@ margin-bottom: 10px;
 color: #721c24;
 }
 .temperature{
+    text-align: center;
     font-size: 2.5rem;
     font-weight: bold;
     color:#721c24 ;
 }
 .description{
-margin-top: 5px;
-color: #721c24;
-
-
+    text-align: center;
+    margin-top: 5px;
+    color: #721c24;
+}
+.card{
+    border-radius: 9px;
+    margin-top: 5px;
+    border-color: #721c24;
+    color: cadetblue;    
+    background-color: gainsboro;
+    }
+.card-title{
+    margin-top: 5px;
+    color: #88343c;      
+}
+.card-body{
+    margin-top: 5px;
+    color: #88343c;            
+            
+}
+.card-text{
+    margin-top: 5px;
+    color: #88343c;         
+}
+.card-icon{
+    margin-top: 5px;
+    color: #88343c;         
+}
+.card-head{
+    margin-top: 5px;
+    color: #88343c;         
 }

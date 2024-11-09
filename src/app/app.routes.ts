@@ -6,7 +6,7 @@ import { PreferitiComponent } from './components/preferiti/preferiti.component';
 
 export const routes: Routes = [
 
-{ path: "", redirectTo: "citta-inserimento", pathMatch:"full" } ,   
+{ path: "", redirectTo: "http://localhost:4200/", pathMatch:"full" } ,   
 { path: "home", component: HomeComponent } , 
 { path: "grafico", component: GraficoComponent },
 { path: "citta/inserimento", component: CittaInserimentoComponent },

@@ -46,3 +46,5 @@ https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&app
 ## COMPLETE
 https://api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
 ## NPM EXTENSION OPENMETEP : ' npm install openmeteo '
+## icon by https://www.iconfinder.com/weather-icons?price=free
+## icon by https://icons8.com/icons

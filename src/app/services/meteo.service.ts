@@ -18,8 +18,9 @@ export class MeteoService {
   
   city: City[] = new Array();
 
-  constructor(private readonly httpClientService: HttpClient) {
 
+  constructor(private readonly httpClientService: HttpClient) {
+/*
      fetchData(cityName: string){
        //${URL}${cityName}${City.API_KEY}
        models.API_KEY
@@ -31,7 +32,8 @@ export class MeteoService {
       localStorage.setItem("elenco_citta", JSON.stringify([]))
     else
       this.city = JSON.parse(losCity);
-  }
+ */
+      }
 
   renderWeather(weather: any) {
     console.log(weather);

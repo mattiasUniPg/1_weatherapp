@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MeteoService } from '../services/meteo.service';
 import { HttpClientModule } from '@angular/common/http';
+import * as allIcons from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [MeteoService]
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
 
   loadData() {
     if (this.cityName) {
+     /*
       this.meteoService.fetchWeather(this.cityName).subscribe({
 
         next: (data: any) => {
@@ -61,7 +63,7 @@ export class HomeComponent implements OnInit {
       error: (err: any) => {
         console.log('caricamento non riuscito', err);
       }
-
+*/
     }
   }
 
