@@ -1,15 +1,56 @@
-<p>grafico works!</p>
-<div class="row">
-<div class="col-lg-6">
-    <h3>Implementa il grafico 24H con l'andamento delle temp da open meteo</h3>
-    <!--
-<canvas id="line" type="line">
-
-
-
-</canvas>
--->
-
+<div id="action-description">
+    <p>
+        This chart visualizes the hourly mean temperature with multi-colored line series in the chart. Data points are
+        enhanced with segments and tooltips.
+    </p>
 </div>
-
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block' align='center' id='chartcontainer' [title]='title'
+            [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [tooltip]='tooltip' (load)='load($event)'
+            [chartArea]='chartArea' [width]='width' [legendSettings]='legend' [annotations]='annotations'>
+            <e-series-collection>
+                <e-series [dataSource]='dataValues' type='MultiColoredLine' xName='XValue' yName='YValue'
+                    segmentAxis='Y' name='City' width=2 [segments]='segments'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
 </div>
+<style>
+    .chartCircle {
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+    }
+
+    .blueCircle {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .greenCircle {
+        color: green;
+        font-weight: bold;
+    }
+
+    .redCircle {
+        color: red;
+        font-weight: bold;
+    }
+
+    .purpleCircle {
+        color: purple;
+        font-weight: bold;
+    }
+
+    .yellowCircle {
+        color: yellow;
+        font-weight: bold;
+    }
+
+    .chartPadding {
+        padding-left: 5px;
+        font-size: 14px;
+    }
+</style>

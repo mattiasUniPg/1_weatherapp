@@ -1,29 +1,35 @@
-<p>preferiti works!</p>
-<h1>ORDINA CON LA FUNZIONE DICHIARATA IN preferiti component " ordinaCitta() " CITTA SELEZIONATE</h1>
-<!--
-<table class="table table-striped">
-    <thead>
-<tr>
-    <th>Citta</th>
-    <th>Info:</th>
-    <th>Temperatura</th>
-    <th>condizioni</th>
-    <th>umidity</th>
-    <th>Vento</th>
-</tr>
- </thead>
- <tbody>
-<tr *ngFor="let item of preferiti"> 
-    <td>{{item.city}}</td>
-    <td>{{item.information}}</td>
-    <td>{{item.temperature}}</td>
-    <td>{{item.conditions}}</td>    
-    <td>{{item.humidity}}</td>
-    <td>{{item.wind}}</td>
-    <td>
-        <button type="button" class="btn btn-outline-danger" >Scrivi (Click)="elimina()" X</button>
-    </td>
-</tr>
- </tbody>
-</table>
--->
+<h3>Le città aggiunte ai preferiti sono:</h3>
+<li *ngFor="let p of elencoPreferiti">
+    <div class="card" >
+        <h2 class="card-head">{{ p.nome || "Seleziona la città" }}</h2>        
+        <div class="card-body">
+            <button class="btn btn-danger btn-sm" (click)="EliminaPreferito(p.nome, p.lat, p.lon)"><i class="fa fa-trash fa-sm"></i></button>
+            <button class="btn btn-primary btn-sm ms-2" (click)="SelezionaCitta(p.lat, p.lon, p.nome)"><i class="fa fa-eye fa-sm"></i></button>
+        </div>
+    </div>
+</li>        
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>{{ meteoDati?.hourly_units?.temperature_2m || 'Temperatura' }}</th>
+                    <th>{{ meteoDati?.hourly_units?.precipitation || 'Precipitazioni' }}</th>
+                    <th>{{meteoDati?.hourly_units?.relative_humidity_2m || 'Umidita'}}</th>
+                    <th>{{meteoDati?.hourly_units?.wind_speed_10m || 'Vento'}}</th>
+                    <th>Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of meteoDati?.hourly?.time; let i = index">
+                    <td> {{ ConvertiUnixDataToItaliano(t) }}</td>
+                    <td>{{ meteoDati!.hourly!.temperature_2m![i] }}</td>
+                    <td>{{ meteoDati!.hourly!.precipitation![i] }}</td>
+                    <td>{{ meteoDati!.hourly!.relative_humidity_2m![i] }}</td>
+                    <td>{{ meteoDati!.hourly!.wind_speed_10m![i] }}</td>
+                    <td>
+                        <i class="{{ ConvertiIconeMeteo(meteoDati!.hourly!.weathercode![i]) }}"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>

@@ -2,7 +2,9 @@ body {
     background: linear-gradient(to right #99cbff , #e45b63);
     font-family: "Poppins", "sans-serif"; 
 }
-
+h2{
+   text-align: center;
+}
 .weather-app{
 min-width: 400px;
 margin: 100px auto;
@@ -43,22 +45,27 @@ color: #721c24;
 .card{
     border-radius: 9px;
     margin-top: 5px;
+    margin-left: 10%;
+    margin-right: 50%;
     border-color: #721c24;
-    color: cadetblue;    
-    background-color: gainsboro;
+    color: #333;    
+    background-color: whitesmoke;
     }
+.btnPr{    
+text-align: center;
+}
 .card-title{
     margin-top: 5px;
-    color: #88343c;      
+    color: #333;      
 }
 .card-body{
     margin-top: 5px;
-    color: #88343c;            
+    color: #333;            
             
 }
 .card-text{
     margin-top: 5px;
-    color: #88343c;         
+    color: #333;         
 }
 .card-icon{
     margin-top: 5px;
@@ -68,3 +75,18 @@ color: #721c24;
     margin-top: 5px;
     color: #88343c;         
 }
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  div.scroll-container {
+    background-color: whitesmoke;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+       
+  }
+      
+  div.scroll-container img {
+    padding: 10px;
+  }    

@@ -1,35 +1,31 @@
-<p>citta-inserimento works!</p>
 <h1>AGGIUNGI AI PREFERITI LA CITTA DA TENERE IN LOCALE</h1>
-<!--
 <div class="row">
     <div class="col">
         <h2>Inserimento citta</h2>
-        <div class="form-group">
+        <div class="form-group">      
             <label for="input-city">city</label>
-            <input type="text" class="form-control" id="input-city" [(ngModel)]="cit" />
+            <input type="text" class="form-control" id="input-city" [(ngModel)]="ricerca" placeholder="Inserisci città" />
         </div>
         <div class="form-group">
             <label for="input-information">information</label>
-            <input type="text" class="form-control" id="input-information" [(ngModel)]="info" />
+            <input type="text" class="form-control" id="input-information" />
         </div>
         <div class="form-group">
             <label for="input-temperature">temperature</label>
-            <input type="number" class="form-control" id="input-temperature" [(ngModel)]="temp" />
+            <input type="number" class="form-control" id="input-temperature"  />
+        </div> 
+        <div class="d-grid">
+            <button type="button" class="btn btn-outline-success search-btn" (click)="CercaCitta()">Cerca</button>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let c of elenco"
+                    (click)="SelezionaCitta(c.lat, c.lon, c.display_name)">{{ c.display_name }}</li>
+            </ul>
+        </div>       
+        <div class="#">
+            <div class="#" style="width: 18rem;">
+                <h2 > {{ locationSelezionata || "Seleziona la città" }} </h2>        
+                <button class="btn btn-primary" *ngIf="locationSelezionata" (click)="AggiungiPreferito()"><i class="fa fa-star fa-sm">Aggiungi Preferiti</i></button>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="input-conditions">conditions</label>
-            <input type="text" class="form-control" id="input-conditions" [(ngModel)]="cond" />
-        </div>
-        <div class="form-group">
-            <label for="input-umidity">umidity</label>
-            <input type="number" class="form-control" id="input-umidity" [(ngModel)]="umid" />
-        </div>
-        <div class="form-group">
-            <label for="input-wind">wind</label>
-            <input type="number" class="form-control" id="input-wind" [(ngModel)]="win" />
-        </div>
-    <button type="submit" class="btn btn-primary" (click)="salva()">Save</button>
     </div>
-
-
-</div>-->
+</div>

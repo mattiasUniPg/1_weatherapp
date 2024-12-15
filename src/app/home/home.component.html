@@ -1,122 +1,87 @@
 <div class="container">
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="text" class="font-control search-input" [(ngModel)]="ricerca" placeholder="Inserisci città" />
+        </div>
+        <div class="d-grid">
+            <button type="button" class="btn btn-outline-success search-btn" (click)="CercaCitta()">Cerca</button>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let c of elenco"
+                    (click)="SelezionaCitta(c.lat, c.lon, c.display_name)">{{ c.display_name }}</li>
+            </ul>
+        </div>
+    </div>
     <div class="weather-card">
-        <div class="form-outline" data-mdb-input-init>
-            <input type="search" id="form1" class="form-control" placeholder="Enter city" aria-label="Cerca" />
-        </div>
-        <div class="input-group">
-            <input type="text" class="font-control search-input" placeholder="Enter location"/>
-            <button class="btn btn-outline-success search-btn">Cerca</button>
-        </div>
-        
         <div class="card" style="width: 18rem;">
-            <h2>CITTA CERCATA</h2>
-            <img class="mx-auto d-block" src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-128.png" class="card-img-top"  height="120px" width="140px" >
-            <div class="card-body">
-                <!--API GET CITTA CERCATA--->
-              <h5 class="card-title">{{data.city}}{{data.temperature+'C°'}}</h5>
-              <p class="card-text"> {{data.information+' '}} {{data.conditions+' '}} {{data.humidity+'%   '}} {{data.wind+' km/h'}} </p>
-              <a href="/preferiti" class="btn btn-primary">
-                <img src="https://img.icons8.com/?size=64&id=40097&format=png " class="card-img-top">
-               <!-- <ion-icon name="add-circle-outline">ADD</ion-icon> --> 
-              </a>
-            </div>
-          </div> 
+            <h2 > {{ locationSelezionata || "Seleziona la città" }} </h2>        
+            <img class="mx-auto d-block"
+                src="https://png.pngtree.com/png-vector/20230414/ourmid/pngtree-sun-orange-three-dimensional-illustration-png-image_6694186.png"
+                class="card-img-top" height="120px" width="140px">
+            <button class="btn btn-primary" *ngIf="locationSelezionata" (click)="AggiungiPreferito()"><i class="fa fa-star fa-sm">Aggiungi Preferiti</i></button>
+        </div>
     </div>
 </div>
-
-<div class="offcanvas offcanvas-start" id="demo">
-    <div class="offcanvas-header">
-      <h1 class="offcanvas-title">Grafico24Ore</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+<div class="container">
+    <div class="weather-card">
+        <div class="offcanvas offcanvas-start" id="demo">
+            <div class="offcanvas-header">
+                <h1 class="offcanvas-title">Grafico24Ore</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <h3>Ultime Ore</h3>
+            <div class="scroll-container" *ngFor="let t of meteoDati?.hourly?.time; let i = index">
+                <div style="float:left; display:block; width:150px; height:150px;border: solid 1px #000">
+                    <h5 class="card-title"> {{ ConvertiUnixDataToItaliano(t) }} </h5>
+                    <i class="{{ ConvertiIconeMeteo(meteoDati!.hourly!.weathercode![i]) }}"></i>   
+                    <h5 class="card-title">{{ meteoDati!.hourly!.temperature_2m![i] }} {{meteoDati?.hourly_units?.temperature_2m || 'Temperatura'}} </h5>
+                </div>
+            </div> 
+            <div class="offcanvas-body">
+                <p>Caricamento grafico ultime ore</p>
+                <p>..</p>
+                <p>..</p>
+                <a class="nav-link" href="/grafico">
+                    <button class="btn btn-secondary" type="button">Guarda</button>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid mt-3" >
+            <p>grafico andamento meteo ultime ore.</p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                Charts 24h
+            </button>
+        </div>
     </div>
-    <div class="offcanvas-body">
-      <p>Caricamento grafico ultime 24h</p>
-      <p>..</p>
-      <p>..</p>
-      <a class="nav-link" href="/grafico">
-      <button class="btn btn-secondary" type="button" >Guarda</button>
-    </a>
-    </div>
-  </div>
-  
-  <div class="container-fluid mt-3">
-    <h3>Ultime Ore</h3>
-    <p>grafico andamento meteo ultime 24 ore.</p>
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-      Open OffCanvas Sidebar
-    </button>
-  </div>
-
-
-
+</div>
 <h3>Le città aggiunte ai preferiti sono:</h3>
-<ol>
-    <li *ngFor="let item of city">
-        <div class="card" style="width: 18rem;">
-            <h2 class="card-head">{{item}}</h2>
-            <div class="card-icon">
-            <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-128.png" class="card-img-top"  height="120px" width="140px" >
-            </div>
-            <div class="card-body">
-                <li *ngFor="let det of carath"><!--MODELS LOCALE JSON "ESEMPIO"--->
-              <h5 class="card-title">{{data.city}}{{data.temperature+'C°'}}{{'Esempio'+ det.temperature }}</h5>
-              <p class="card-text"> {{data.information+' '}} {{'Esempio '+ det.condition }} {{data.conditions+' '}}  {{'Esempio % '+ det.humidity }} {{data.humidity+'%   '}} {{data.wind+' km/h'}} {{'Esempio km/h '+ det.vento }} </p>
-            </li>
-              <a href="/preferiti" class="btn btn-primary">
-                <img src="https://img.icons8.com/?size=52&id=45&format=png" class="card-img-top">
-            </a>
+<li *ngFor="let p of elencoPreferiti">
+    <div class="card" >
+        <h2 class="card-head">{{ p.nome || "Seleziona la città" }}</h2>
+        <div class="card-body">
+<!--           <li *ngFor="let t of meteoDati?.hourly?.time; let i = index"> MODELS LOCALE JSON "ESEMPIO"
+                <i class="{{ ConvertiIconeMeteo(meteoDati!.hourly!.weathercode![i]) }}"></i>     
+                <h5 class="#">{{ ConvertiUnixDataToItaliano(t) }}</h5>
+                <h5 class="card-title">{{ meteoDati!.hourly!.temperature_2m![i] }} {{meteoDati?.hourly_units?.temperature_2m || 'Temperatura'}} </h5>
+                <p class="card-text"> {{meteoDati?.hourly_units?.precipitation || 'Precipitazioni'}} {{ meteoDati!.hourly!.precipitation![i] }}
+                    {{ meteoDati!.hourly!.relative_humidity_2m![i] }} {{meteoDati?.hourly_units?.relative_humidity_2m || 'Umidita'}} 
+                    {{ meteoDati!.hourly!.wind_speed_10m![i] }} {{meteoDati?.hourly_units?.wind_speed_10m || 'Vento'}}                 
+                </p>
+            </li>-->
+            <div class="btnPr">
+            <button class="btn btn-danger btn-sm" (click)="EliminaPreferito(p.nome, p.lat, p.lon)"><i class="fa fa-trash fa-sm"></i></button>
+            <button class="btn btn-primary btn-sm ms-2" (click)="SelezionaCitta(p.lat, p.lon, p.nome)"><i class="fa fa-eye fa-sm"></i></button>
             </div>
         </div>
-    </li>
-</ol>
+    </div>
+</li>
 <hr />
-
 <!--
-  MODELS:
-  information: string | undefined;
-  temperature: number | undefined;
-  city: string | undefined;
-    conditions: string | undefined;
-    umidity: number | undefined;
-    wind: number | undefined;
-<table>
-    <thead>
-        <tr>
-            <th>città </th>
-            <th>temperatura </th>
-            <th>vento </th>
-            <th>città </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let det of carath">
-            <td>{{ det.temperature }}</td>
-            <td>{{ det.vento }} </td>
-            <td>{{ det.humidity }} </td>
-            <td>{{ det.condition }} </td>
-        </tr>
-    </tbody>
-</table>
+<div class="scroll-container">
+    <div *ngFor="let t of meteoDati?.hourly?.time; let i = index">
 
+        <h5 class="card-title">{{ ConvertiUnixDataToItaliano(t) }}</h5>
+        <i class="">{{ ConvertiIconeMeteo(meteoDati!.hourly!.weathercode![i]) }}"></i>
 
-<div class="row">
-    <div class="col">
-        <h3>Inserimento preferiti</h3>
-        <div class="form-group">
-            <label for="input-preferiti"></label>
-            <input type="text" [(ngModel)]="preferiti" class="form-control" id="preferiti" placeholder="preferiti">
-        </div>
     </div>
 </div>
 -->
-<hr />
-
-<div class="row">
-    <div class="col">
-        <ul>
-            <li><strong>Preferiti:</strong>
-                {{preferiti}}
-            </li>
-        </ul>
-    </div>
-</div>

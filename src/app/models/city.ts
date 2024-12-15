@@ -1,37 +1,20 @@
-export const models = {
-  API_KEY: '',
-};
-
-export class City {
-  [x: string]: any;
-  getAll(): City[] {
-    throw new Error('Method not implemented.');
-  }
-  Insert(sCity: City) {
-    throw new Error('Method not implemented.');
-  }
-  city: string | undefined;
+/*export interface City {
+  name: string | undefined;
+  lat: number | Float32Array;
+  lon: number | Float32Array;
   information: string | undefined;
-  temperature: number | undefined;
   conditions: string | undefined;
   humidity: number | undefined;
   wind: number | undefined;
+}*/
+export class City {
+  nome: string;
+  lat: string;
+  lon: string;
 
-
-  constructor(
-    cit: string,
-    info: string,
-    temp: number,
-    cond: string,
-    humid: number,
-    win: number
-  ) {
-    this.city = cit;
-    this.information = info;
-    this.temperature = temp;
-    this.conditions = cond;
-    this.humidity = humid;
-    this.wind = win;
+  constructor(data: Partial<City>){
+      this.nome = data.nome || "";
+      this.lat = data.lat || "";
+      this.lon = data.lon || "";
   }
-
 }
